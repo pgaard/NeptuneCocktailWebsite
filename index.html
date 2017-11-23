@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="neptuneApp">
 
   <head>
 
@@ -25,7 +25,7 @@
 
   </head>
 
-  <body id="page-top">
+  <body id="page-top" ng-controller="NeptuneController">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -83,36 +83,18 @@
           </div>
         </div>
         <div class="row text-center">
-          <div class="col-md-4">
+          <div class="col-md-4" ng-repeat="gig in gigs | filter: futureGig |  orderBy: 'Date'">
             <span class="fa-stack fa-4x">
               <!--
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
               -->
-               <img class="img-fluid rounded-circle" src="img/band1.jpg" alt="">
+               <img class="img-fluid rounded-circle" src="img/{{gig.Image}}" alt="">
             </span>
-            <h4 class="service-heading">The Commander Bar</h4>
-            <h4 class="service-heading">December 8 & 9th 2017</h4>
-            <p class="text-muted">30279 Airport Rd, Pequot Lakes, MN</p>
-            <p class="text-muted">Join us in the icy northland for 2 nights of rock in beautiful Beezy Point.</p>
-          </div>
-          <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading">Bogart's</h4>
-            <h4 class="service-heading">December 30th 9pm</h4>
-            <p class="text-muted">14917 Garrett Ave, Apple Valley.</p>
-          </div>
-          <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-              <i class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading">Serum's</h4>
-            <h4 class="service-heading">January 13th</h4>
-            <p class="text-muted">213 Jackson St, Anoka, MN.</p>
+            <h4 class="service-heading">{{gig.Bar}}</h4>
+            <h4 class="service-heading">{{gig.Date|date:"shortDate"}}</h4>
+            <p class="text-muted"><a href="http://maps.google.com/?q={{gig.Address}}" target="_blank">{{gig.Address}}</a></p>
+            <p class="text-muted">{{gig.Description}}</p>
           </div>
         </div>
       </div>
@@ -374,7 +356,7 @@
     <section class="bg-light" id="team">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 mx-auto">
+          <div class="col-lg-6 col-md-6 mx-auto">
             <h2 class="section-heading text-uppercase text-center">The Band</h2>
             <p class="section-subheading text-justify">Neptune Cocktail only has one rule: play songs that keep the crowd dancing
               and having fun all night long, they play the biggest hit rock songs, spanning the
@@ -421,7 +403,7 @@
             </div>
         </div>
         <div class="row">
-          <div class="col-lg-6 mx-auto text-justify">
+          <div class="col-sm-6 mx-auto text-justify">
             <p class="large">Front man Steve Weber started Neptune Cocktail in 2004 and bassist Corey
               Hvidsten joined a couple years later. With Corey, the band gained a unique a dual vocal
               attack allowing them to cover a massive variety of songs. Along with his killer vocals,
@@ -740,6 +722,27 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/agency.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDBzFlzS-lX_RUkP81Hs2kFNjS8LXBM0hE",
+        authDomain: "neptune-cocktail.firebaseapp.com",
+        databaseURL: "https://neptune-cocktail.firebaseio.com",
+        projectId: "neptune-cocktail",
+        storageBucket: "",
+        messagingSenderId: "784739777927"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script src="js/neptune.js"></script>
 
   </body>
 
