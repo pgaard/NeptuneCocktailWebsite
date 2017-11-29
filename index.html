@@ -96,8 +96,9 @@
                <a href="{{gig.Link}}" target="_blank"><img class="img-fluid rounded-circle" src="img/bars/{{gig.Image}}" alt=""></a>
             </span>
             </span>
-            <h4 class="service-heading">{{gig.Bar}}</h4>
-            <h4 class="service-heading">{{gig.Date|date:"shortDate"}}</h4>
+            <h4 class="service-heading text-primary">{{gig.Bar}}</h4>
+            <h4 class="service-heading">{{gig.Date|date:"EEEE M/d/yy"}}</h4>
+            <h4 class="service-heading">{{gig.StartTime}}</h4>
             <p class="text-muted"><a href="http://maps.google.com/?q={{gig.Address}}" target="_blank">{{gig.Address}}</a></p>
             <p class="text-muted">{{gig.Description}}</p>
           </div>
@@ -342,7 +343,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-8 mx-auto text-justify">
             <p class="large">Front man Steve Weber started Neptune Cocktail in 2004 and bassist Corey
-              Hvidsten joined a couple years later. With Corey, the band gained a unique a dual vocal
+              Hvidsten joined a couple years later. With Corey, the band gained a unique dual vocal
               attack allowing them to cover a massive variety of songs. Along with his killer vocals,
               Steve strums a mean guitar alongside Corey who lays down a strong foundation on the
               bass guitar and sings soaring high notes. Drummer Peter Gaard joined forces with the
