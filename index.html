@@ -103,6 +103,7 @@
             <h4 class="service-heading">{{gig.Date|date:"EEEE M/d/yy"}}</h4>
             <h4 class="service-heading">{{gig.StartTime}}</h4>
             <p class="text-muted"><a href="http://maps.google.com/?q={{gig.Address}}" target="_blank">{{gig.Address}}</a></p>
+            <p ng-show="{{gig.Facebook != null}}"><a href="https://www.facebook.com/events/{{gig.Facebook}}" target="_blank">   <i class="fa fa-facebook"></i> Facebook Event</a></p>
             <p class="text-muted">{{gig.Description}}</p>
           </div>
         </div>
