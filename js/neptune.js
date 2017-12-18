@@ -8,11 +8,11 @@ app.controller("NeptuneController", function($scope, $firebaseArray, $sce) {
     $scope.gigs = $firebaseArray(ref);
 
     var date = new Date();
-    date.setTime(date.getTime() + (48*60*60*1000));
-    $scope.tomorrow = date;
+    date.setTime(date.getTime() - (48*60*60*1000));
+    $scope.yesterday = date;
 
     $scope.futureGig = function(gig){
-        return new Date(gig.Date) >= $scope.tomorrow;
+        return new Date(gig.Date) > $scope.yesterday;
     }
 
     $scope.videos =
